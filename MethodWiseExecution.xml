@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuiteB">
+    <test verbose="2" preserve-order="true" name="Test2">
+        <classes>
+            <class name="Class01.Task1">
+                <methods>
+                    <include name="verifyTheLoginFunctionality"></include>
+                    <exclude name="invalidLogin"></exclude>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

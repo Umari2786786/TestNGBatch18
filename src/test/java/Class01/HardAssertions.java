@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class HardAssertions {
     public static WebDriver driver;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void  precondition(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -22,7 +22,7 @@ public class HardAssertions {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-    @Test
+    @Test (groups = "smoke")
     public void verifyTheLoginFunctionality(){
         WebElement username = driver.findElement(By.xpath("//input[@name='txtUsername']"));
         username.sendKeys("Admin");
@@ -42,7 +42,7 @@ public class HardAssertions {
         Assert.assertTrue(StateOfDashboardText);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }

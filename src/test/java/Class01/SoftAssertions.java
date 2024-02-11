@@ -15,7 +15,7 @@ import java.time.Duration;
 
 public class SoftAssertions {
     public static WebDriver driver;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void  precondition(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -23,7 +23,7 @@ public class SoftAssertions {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-    @Test
+    @Test (groups = "regression")
     public void verifyTheLoginFunctionality(){
         WebElement username = driver.findElement(By.xpath("//input[@name='txtUsername']"));
         username.sendKeys("Admin");
@@ -31,17 +31,19 @@ public class SoftAssertions {
         pasword.sendKeys("Hum@nhrm123");
         WebElement loginBtn = driver.findElement(By.xpath("//input[@name='Submit']"));
         loginBtn.click();
-        //find element in dashboard
+    //find element in dashboard
         WebElement dashBoard = driver.findElement(By.xpath("//h1[text()='Dashboard']"));
         String actualText = dashBoard.getText();
         String expectedText = "Dashboard admin";
-        //SOFT ASSERTION
+        //make it fial on purpose to learn the concept of hard assertions delete the "admin" above
+    //SOFT ASSERTION
 
         SoftAssert soft=new SoftAssert();
-        //verification
+    //verification
         soft.assertEquals(expectedText, actualText);
         System.out.println("Login Details Incorrect");
-        //assert that it is displayed
+
+    //assert that it is displayed
         boolean StateOfDashboardText = dashBoard.isDisplayed();
 
         soft.assertTrue(StateOfDashboardText);
@@ -49,7 +51,7 @@ public class SoftAssertions {
         soft.assertAll();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }
