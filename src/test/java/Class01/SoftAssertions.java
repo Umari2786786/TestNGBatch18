@@ -34,14 +34,14 @@ public class SoftAssertions {
     //find element in dashboard
         WebElement dashBoard = driver.findElement(By.xpath("//h1[text()='Dashboard']"));
         String actualText = dashBoard.getText();
-        String expectedText = "Dashboard admin";
+        String expectedText = "Dashboard";
         //make it fial on purpose to learn the concept of hard assertions delete the "admin" above
     //SOFT ASSERTION
 
         SoftAssert soft=new SoftAssert();
     //verification
         soft.assertEquals(expectedText, actualText);
-        System.out.println("Login Details Incorrect");
+        System.out.println("Testing successful for login credentials");
 
     //assert that it is displayed
         boolean StateOfDashboardText = dashBoard.isDisplayed();

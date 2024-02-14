@@ -33,7 +33,7 @@ public class HardAssertions {
         //find element in dashboard
         WebElement dashBoard = driver.findElement(By.xpath("//h1[text()='Dashboard']"));
         String actualText = dashBoard.getText();
-        String expectedText = "Dashboard admin";
+        String expectedText = "Dashboard";
 
         //verification
         Assert.assertEquals(expectedText, actualText);
