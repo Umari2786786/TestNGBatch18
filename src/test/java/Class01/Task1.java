@@ -17,7 +17,7 @@ public class Task1 {
 //    login and verify that user has logged in
     public static WebDriver driver;
     @BeforeMethod
-    public void  precondition(){
+    public void  precondition (){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
